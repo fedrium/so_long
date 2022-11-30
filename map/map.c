@@ -6,7 +6,7 @@
 /*   By: cyu-xian <cyu-xian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 14:11:45 by cyu-xian          #+#    #+#             */
-/*   Updated: 2022/11/27 16:33:43 by cyu-xian         ###   ########.fr       */
+/*   Updated: 2022/11/30 14:39:23 by cyu-xian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	ft_strlen(char *str)
 	int	i;
 
 	i = 0;
+	if (str == NULL)
+		return (i);
 	while (str[i] != '\0')
 		i++;
 	return (i);
@@ -78,8 +80,22 @@ int	map_allocate(int fd, t_info *info)
 	i = 0;
 	string = ft_calloc(sizeof(char), 9000);
 	area = read(fd, string, 9000);
+	if (area == 0)
+	{
+		write(1, "Error! File is empty\n", 21);
+		return (1);
+	}
 	size_cal(string, info);
 	info->game->map = ft_split(string, '\n');
+	while (i <= info->game->width)
+	{
+		if (info->game->map[i] == NULL && i <= info->game->width)
+		{
+			write(1, "Error! File formatting bad\n", 28);
+			exit(1);
+		}
+		i++;
+	}
 	free(string);
 	return (area);
 }

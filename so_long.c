@@ -6,12 +6,11 @@
 /*   By: cyu-xian <cyu-xian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 16:51:19 by cyu-xian          #+#    #+#             */
-/*   Updated: 2022/11/27 15:54:23 by cyu-xian         ###   ########.fr       */
+/*   Updated: 2022/11/30 14:55:55 by cyu-xian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include <stdio.h>
 
 int	cleanexit(void)
 {
@@ -32,25 +31,31 @@ void	image(t_info info)
 	mlx_loop(info.mlx.mlx);
 }
 
+void	declare(t_info *info)
+{
+	info->game = malloc(sizeof(t_game));
+	info->img = malloc(sizeof(t_img));
+	info->img->img_width = 64;
+	info->img->img_height = 64;
+	info->movement = 0;
+}
+
 int	main(int argc, char **argv)
 {
 	t_info	info;
 	t_count	count;
 	int		fd;
-	int		area;
 
-	(void)argc;
-	info.game = malloc(sizeof(t_game));
-	info.img = malloc(sizeof(t_img));
-	info.img->img_width = 64;
-	info.img->img_height = 64;
-	info.movement = 0;
+	declare(&info);
+	if (argc_check(argc) == 1)
+		return (0);
 	if (filecheck(argv[1]) == 1)
 		return (0);
 	fd = open(argv[1], 0);
 	if (fdcheck(fd) == 1)
 		return (0);
-	area = map_allocate(fd, &info);
+	if (map_allocate(fd, &info) == 1)
+		return (0);
 	get_pos(info.game->map, &info);
 	if (checker(info.game->map, &info, &count) == 1)
 	{

@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   event.c                                            :+:      :+:    :+:   */
+/*   misc2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cyu-xian <cyu-xian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/24 16:17:28 by cyu-xian          #+#    #+#             */
-/*   Updated: 2022/11/30 14:39:04 by cyu-xian         ###   ########.fr       */
+/*   Created: 2022/11/28 16:35:40 by cyu-xian          #+#    #+#             */
+/*   Updated: 2022/11/30 14:39:07 by cyu-xian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	event(t_info *info)
+int	argc_check(int argc)
 {
-	if (info->game->map[info->ply][info->plx] == 'C')
+	if (argc != 2)
 	{
-		info->coll = info->coll - 1;
-		info->game->map[info->ply][info->plx] = '0';
+		write(1, "Error! File not found\n", 22);
+		return (1);
 	}
 	return (0);
 }

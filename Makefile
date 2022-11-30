@@ -1,4 +1,4 @@
-SRCS	= map/map.c so_long.c \
+SRCS	= map/map.c so_long.c misc2.c \
 			ft_split.c check.c floodfill.c window.c collision.c event.c misc.c
 
 OBJS	= $(SRCS:.c=.o)

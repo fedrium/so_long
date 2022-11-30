@@ -6,7 +6,7 @@
 /*   By: cyu-xian <cyu-xian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 16:57:57 by cyu-xian          #+#    #+#             */
-/*   Updated: 2022/11/27 16:08:35 by cyu-xian         ###   ########.fr       */
+/*   Updated: 2022/11/28 17:48:11 by cyu-xian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,10 @@ int	put_img(t_info *info)
 			&img.img_width, &img.img_height);
 	mlx_put_image_to_window(info->mlx.mlx, info->mlx.mlx_win,
 		img.ground, info->plx * 64, info->ply * 64);
+	mlx_destroy_image(info->mlx.mlx, img.ground);
 	mlx_put_image_to_window(info->mlx.mlx, info->mlx.mlx_win,
 		img.player, info->plx * 64, info->ply * 64);
+	mlx_destroy_image(info->mlx.mlx, img.player);
 	return (0);
 }
 

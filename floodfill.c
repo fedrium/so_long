@@ -6,12 +6,11 @@
 /*   By: cyu-xian <cyu-xian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:40:54 by cyu-xian          #+#    #+#             */
-/*   Updated: 2022/11/27 16:12:50 by cyu-xian         ###   ########.fr       */
+/*   Updated: 2022/11/30 14:56:58 by cyu-xian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include <stdio.h>
 
 char	*ft_strdup_w(char *str)
 {
@@ -55,7 +54,7 @@ int	floodfill_helper(char **array, int x, int y, t_count *count)
 int	floodfill(char **array, t_count *count, t_info *info)
 {
 	int		i;
-	int		a;
+	int		temp;
 	char	**visited;
 
 	i = 0;
@@ -65,7 +64,7 @@ int	floodfill(char **array, t_count *count, t_info *info)
 		visited[i] = ft_strdup_w(array[i]);
 		i++;
 	}
-	a = floodfill_helper(visited, info->game->tx, info->game->ty, count);
+	temp = floodfill_helper(visited, info->game->tx, info->game->ty, count);
 	i = 0;
 	while (i <= info->game->width)
 	{
@@ -73,7 +72,7 @@ int	floodfill(char **array, t_count *count, t_info *info)
 		i++;
 	}
 	free(visited);
-	return (a);
+	return (temp);
 }
 
 void	get_pos(char **array, t_info *info)
@@ -94,34 +93,6 @@ void	get_pos(char **array, t_info *info)
 				info->game->tx = i;
 				info->plx = j;
 				info->ply = i;
-			}
-			j++;
-		}
-		i++;
-	}
-}
-
-void	get_extra_pos(char **array, t_game *game)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	while (i <= game->width)
-	{
-		j = 0;
-		while (array[i][j] != '\0')
-		{
-			if (array[i][j] == 'P')
-			{
-				game->coords.cx = i;
-				game->coords.cy = j;
-			}
-			if (array[i][j] == 'E')
-			{
-				game->coords.ex = i;
-				game->coords.ey = j;
 			}
 			j++;
 		}

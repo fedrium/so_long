@@ -6,7 +6,7 @@
 /*   By: cyu-xian <cyu-xian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 16:00:24 by cyu-xian          #+#    #+#             */
-/*   Updated: 2022/11/27 16:23:07 by cyu-xian         ###   ########.fr       */
+/*   Updated: 2022/11/30 14:35:48 by cyu-xian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	filecheck(char *str)
 	int	i;
 
 	i = ft_strlen(str);
-	if (i < 5)
+	if (i < 4)
 	{
 		write(1, "Error!\n", 7);
 		return (1);

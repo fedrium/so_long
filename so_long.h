@@ -6,7 +6,7 @@
 /*   By: cyu-xian <cyu-xian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 14:12:06 by cyu-xian          #+#    #+#             */
-/*   Updated: 2022/11/27 16:31:33 by cyu-xian         ###   ########.fr       */
+/*   Updated: 2022/11/28 17:23:10 by cyu-xian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,7 @@ void	xpmtoimg(char *img, t_info *info);
 int		word_check_helper(char **array, t_info *info, t_count *count);
 int		filecheck(char *str);
 int		fdcheck(int fd);
+int		argc_check(int argc);
+int		size_check(char **array, t_info *info);
 
 #endif
